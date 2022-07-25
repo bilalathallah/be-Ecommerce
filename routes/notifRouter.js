@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const notifController = require("../app/controllers/notifController");
+const notifController = require("../app/controllers/api/v1/notifController");
 const notifMiddleware = require("../middlewares/notifMiddleware");
 const userMiddleware = require("../middlewares/userMiddleware");
 
