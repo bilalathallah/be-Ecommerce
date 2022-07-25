@@ -1,5 +1,5 @@
 const wishlistService = require("../app/services/wishlistService");
-const wishlistController = require("../app/controllers/wishlistController");
+const wishlistController = require("../app/controllers/api/v1/wishlistController");
 
 const getByBuyer = async (req, res, buyerId) => {
   try {
@@ -39,15 +39,14 @@ const getBySeller = async (req, res, sellerId) => {
   }
 };
 
-module.exports = {
+module.exports = {   
   async getProductByUser(req, res, next) {
     try {
-      const sizeId = await wishlistService.getProductByUser(
+      const productId = await wishlistService.getProductByUser(
         req.body.userId,
-        req.body.productId
-      );
+        req.body.productId );
 
-      if (sizeId) {
+      if (productId) {
         res.status(422).json({
           status: false,
           message: "Product already in wishlist",
@@ -67,10 +66,8 @@ module.exports = {
     try {
       if (req.user.role === "BUYER") {
         await getByBuyer(req, res, req.user.id);
-        // next();
       } else if (req.user.role === "SELLER") {
         await getBySeller(req, res, req.user.id);
-        // next();
       } else {
         res.status(400).json({
           status: false,

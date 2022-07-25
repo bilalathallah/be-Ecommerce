@@ -11,6 +11,7 @@ module.exports = {
         });
       }
       next();
+      // next();
     } catch (err) {
       res.status(400).json({
         status: false,
@@ -18,7 +19,6 @@ module.exports = {
       });
     }
   },
-
   async getById(req, res, next) {
     try {
       const data = await productService.get(req.params.id);
@@ -33,7 +33,7 @@ module.exports = {
     } catch (error) {
       res.status(400).json({
         status: false,
-        message: error.message,
+        message: err.message,
       });
     }
   },

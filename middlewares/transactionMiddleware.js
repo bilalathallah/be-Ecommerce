@@ -1,5 +1,5 @@
 const transactionService = require("../app/services/transactionService");
-const transactionController = require("../app/controllers/transactionController");
+const transactionController = require("../app/controllers/api/v1/transactionController");
 
 const getByBuyer = async (req, res, buyerId) => {
   try {
@@ -24,7 +24,7 @@ const getBySeller = async (req, res, sellerId) => {
   try {
     const data = await transactionService.getBySeller(sellerId);
     if (data !== null) {
-      return await transacController.listBySeller(req, res, sellerId);
+      return await transactionController.listBySeller(req, res, sellerId);
     } else {
       res.status(404).json({
         status: false,
@@ -50,7 +50,7 @@ module.exports = {
       if (productId) {
         res.status(422).json({
           status: false,
-          message: "Product was already in transaction",
+          message: "Product already in transaction",
         });
       } else {
         next();

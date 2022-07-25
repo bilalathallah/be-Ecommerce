@@ -24,11 +24,11 @@ module.exports = {
 
   async validateUpdate(req, res, next) {
     try {
-      const { role, email, password } = req.body;
-      if (role || email || password) {
+      const { role, email } = req.body;
+      if (role || email) {
         res.status(400).json({
           status: false,
-          message: "You can't update role, email and password!",
+          message: "You can't update role or email!",
         });
         return;
       }
@@ -40,34 +40,13 @@ module.exports = {
       });
     }
   },
-
-  async validateUserIdentity(req, res, next) {
-    try {
-      const { city, address, phone } = await req.user;
-      if (city === null || address === null || phone === null
-        || city === "" || address === "" || phone === "") {
-        res.status(400).json({
-          status: false,
-          message: "Please compelete your profile!",
-        });
-        return;
-      }
-      next();
-    } catch (error) {
-      res.status(400).json({
-        status: false,
-        message: error.message,
-      });
-    }
-  },
-
   async authorize(req, res, next) {
     try {
       const bearerToken = req.headers.authorization;
       const token = bearerToken.split("Bearer ")[1];
       const tokenPayload = jwt.verify(
         token,
-        process.env.JWT_SECRET || "secret"
+        process.env.ACCESS_TOKEN || "secret"
       );
 
       req.user = await userService.getById(tokenPayload.id);
@@ -78,6 +57,7 @@ module.exports = {
         });
         return;
       }
+
       next();
     } catch (error) {
       if (error.message.includes("jwt expired")) {
@@ -91,21 +71,21 @@ module.exports = {
     }
   },
 
+  
+
   async isBuyyer(req, res, next) {
     try {
+      // add token role
       const bearerToken = req.headers.authorization;
+      console.log(bearerToken);
       const token = bearerToken.split("Bearer ")[1];
       const tokenPayload = jwt.verify(
         token,
-        process.env.JWT_SECRET || "secret"
+        process.env.ACCESS_TOKEN || "secret"
       );
-
       req.user = await userService.getById(tokenPayload.id);
       if (!(req.user.role === "BUYER")) {
-        res.status(401).json({
-          status: false,
-          message: "Anda tidak punya akses (Unauthorized)",
-        });
+        res.status(401).json({ message: "Anda bukan buyer" });
         return;
       }
       next();
@@ -114,10 +94,6 @@ module.exports = {
         res.status(401).json({ message: "Token Expired" });
         return;
       }
-
-      res.status(401).json({
-        message: "Unauthorized",
-      });
     }
   },
 
@@ -127,15 +103,12 @@ module.exports = {
       const token = bearerToken.split("Bearer ")[1];
       const tokenPayload = jwt.verify(
         token,
-        process.env.JWT_SECRET || "secret"
+        process.env.ACCESS_TOKEN || "secret"
       );
 
-      req.user = await userService.getById(tokenPayload.id);
-      if (!(req.user.role === "SELLER")) {
-        res.status(401).json({
-          status: false,
-          message: "Anda tidak punya akses (Unauthorized)",
-        });
+      const user = await userService.getById(tokenPayload.id);
+      if (!(user.role === "SELLER")) {
+        res.status(401).json({ message: "Anda bukan seller" });
         return;
       }
       next();
