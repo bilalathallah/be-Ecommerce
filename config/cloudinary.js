@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 const cloudinary = require("cloudinary").v2;
 
 cloudinary.config({
