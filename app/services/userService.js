@@ -25,7 +25,6 @@ module.exports = {
       throw err;
     }
   },
-
   async create(requestBody) {
     try {
       return await userRepository.create(requestBody);

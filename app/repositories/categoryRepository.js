@@ -1,32 +1,28 @@
-const { Category } = require("../models");
+const { category } = require("../../database/models");
 
 module.exports = {
   findAll() {
-    return Category.findAll();
+    return category.findAll();
   },
-
   find(id) {
-    return Category.findOne({
+    return category.findOne({
       where: {
         id: id,
       },
     });
   },
-
   create(createArgs) {
-    return Category.create(createArgs);
+    return category.create(createArgs);
   },
-
   update(id, updateArgs) {
-    return Category.update(updateArgs, {
+    return category.update(updateArgs, {
       where: {
         id,
       },
     });
   },
-
   delete(id) {
-    return Category.destroy({
+    return category.destroy({
       where: {
         id,
       },

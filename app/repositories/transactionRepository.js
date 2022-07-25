@@ -1,4 +1,4 @@
-const { Transaction, Product, User, Category } = require("../models");
+const { Transaction, Product, User, category } = require("../../database/models");
 
 module.exports = {
   findAll() {
@@ -16,32 +16,20 @@ module.exports = {
   findByBuyer(id) {
     try {
       const data = Transaction.findAll({
-        include: [
-              {
+            include: [{
                 model: Product,
                 as: "products",
-                include: [
-                  {
+                include: [{
                     model: User,
                     as: "userAsSeller",
-                    attributes: [
-                      "id",
-                      "role",
-                      "name",
-                      "city",
-                      "address",
-                      "phone",
-                      "image",
-                    ],
+                    attributes: ["id","role","name","city","address","phone","image"]
                   },
                   {
-                    model: Category,
+                    model: category,
                     as: "categories",
-                    attributes: ["name"],
+                    attributes: ["name"]
                   },
-                ],
-              },
-            ],
+                ]
           },
           {
             model: User,
@@ -49,8 +37,9 @@ module.exports = {
             where: {
               id: id,
             },
-            attributes: [ "id", "role", "name", ],
-        
+            attributes: ["id", "role", "name"]
+          }
+        ]
       });
 
       if (data) {
@@ -64,44 +53,30 @@ module.exports = {
   findBySeller(id) {
     try {
       const data = Transaction.findAll({
-        include: [
-              {
+            include: [{
                 model: Product,
                 as: "products",
-                include: [
-                  {
+                include: [{
                     model: User,
                     as: "userAsSeller",
                     where: {
                       id: id,
                     },
-                    attributes: ["id", "role", "name"],
+                    attributes: [ "id", "role", "name"]
                   },
                   {
-                    model: Category,
+                    model: category,
                     as: "categories",
-                    attributes: ["name"],
+                    attributes: ["name"]
                   },
-            ],  
+                ]
           },
           {
             model: User,
             as: "userAsBuyer",
-            attributes: [
-              "id",
-              "role",
-              "name",
-              "city",
-              "address",
-              "phone",
-              "image",
-            ],
+            attributes: ["id","role","name","city","address","phone","image"]
           }
-        ],
-        attributes: [
-          "id",
-          "status",
-        ],
+        ]
       });
 
       if (data) {
@@ -115,30 +90,20 @@ module.exports = {
   findDetailByBuyer(userId, id){
     try {
       const data = Transaction.findOne({
-        include: [
-              {
+            include: [{
                 model: Product,
                 as: "products",
-                include: [
-                  {
+                include: [{
                     model: User,
                     as: "userAsSeller",
-                    attributes: [
-                      "id",
-                      "role",
-                      "name",
-                      "city",
-                      "address",
-                      "phone",
-                      "image",
-                    ],
+                    attributes: ["id","role","name","city","address","phone","image"]
                   },
                   {
-                    model: Category,
+                    model: category,
                     as: "categories",
-                    attributes: ["name"],
+                    attributes: ["name"]
                   },
-            ],
+                ]
           },
           {
             model: User,
@@ -146,7 +111,7 @@ module.exports = {
             where: {
               id: userId,
             },
-            attributes: [ "id", "role", "name", ],
+            attributes: ["id", "role", "name"]
           }
         ],
         where: {
@@ -165,8 +130,7 @@ module.exports = {
   findDetailBySeller(userId, id){
     try {
       const data = Transaction.findAll({
-        include: [
-              {
+            include: [{
                 model: Product,
                 as: "products",
                 include: [
@@ -179,24 +143,16 @@ module.exports = {
                     attributes: [ "id", "role", "name"]
                   },
                   {
-                    model: Category,
+                    model: category,
                     as: "categories",
-                    attributes: ["name"],
+                    attributes: ["name"]
                   },
-            ],
+                ],
           },
           {
             model: User,
             as: "userAsBuyer",
-            attributes: [
-              "id",
-              "role",
-              "name",
-              "city",
-              "address",
-              "phone",
-              "image",
-            ],
+            attributes: ["id","role","name","city","address","phone","image"]
           }
         ],
         where: {
@@ -235,14 +191,6 @@ module.exports = {
 
   update(id, updateArgs) {
     return Transaction.update(updateArgs, {
-      where: {
-        id,
-      },
-    });
-  },
-
-  delete(id) {
-    return Transaction.destroy({
       where: {
         id,
       },

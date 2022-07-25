@@ -24,6 +24,14 @@ module.exports = {
       throw err;
     }
   },
+  
+  async getCreateData(id) {
+    try {
+      return await productRepository.findByIdCreate(id);
+    } catch (err) {
+      throw err;
+    }
+  },
 
   async getBySellerId(id, sellerId) {
     try {

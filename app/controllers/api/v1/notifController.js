@@ -1,4 +1,4 @@
-const notifService = require("../services/notifService");
+const notifService = require("../../../services/notifService");
 
 module.exports = {
   async list(req, res) {

@@ -1,4 +1,4 @@
-const { Wishlist, User, Product, Category } = require("../models");
+const { Wishlist, User, Product, category } = require("../../database/models");
 
 module.exports = {
   findAll() {
@@ -8,23 +8,20 @@ module.exports = {
   findWishlistBuyerById(id) {
     try {
       const data = Wishlist.findAll({
-        include: [
-          {
+        include: [{
             model: Product,
             as: "products",
-            include: [
-              {
-                model: Category,
+            include: [{
+                model: category,
                 as: "categories",
-                attributes: ["name"],
+                attributes: ["name"]
               },
               {
                 model: User,
                 as: "userAsSeller",
-                attributes: ["name", "city"],
-              },
+                attributes: ["id","role","name","city","address","phone","image"]
+              }
             ],
-            attributes: ["name", "image", "price"],
           },
           {
             model: User,
@@ -33,10 +30,9 @@ module.exports = {
               role: "BUYER",
               id: id,
             },
-            attributes: [],
+            attributes: ["id","role","name"]
           },
         ],
-        attributes: ["id", "productId"],
       });
 
       if (data) {
@@ -50,18 +46,16 @@ module.exports = {
   findWishlistSellerById(id) {
     try {
       const data = Wishlist.findAll({
-        include: [
-          {
+        include: [{
             model: Product,
             as: "products",
             where: {
               userId: id,
             },
-            include: [
-              {
-                model: Category,
+            include: [{
+                model: category,
                 as: "categories",
-                attributes: ["name"],
+                attributes: ["name"]
               },
               {
                 model: User,
@@ -70,13 +64,16 @@ module.exports = {
                   role: "SELLER",
                   id: id,
                 },
-                attributes: [],
+                attributes: ["id","role","name"],
               },
             ],
-            attributes: ["name", "image", "price"],
           },
+          {
+            model: User,
+            as: "userAsBuyer",
+            attributes: ["id","role","name","city","address","phone","image"],
+          }
         ],
-        attributes: ["id"],
       });
 
       if (data) {
@@ -108,6 +105,13 @@ module.exports = {
     return Wishlist.create(createArgs);
   },
 
+  update(id, updateArgs) {
+    return Wishlist.update(updateArgs, {
+      where: {
+        id,
+      },
+    });
+  },
   delete(id) {
     return Wishlist.destroy({
       where: {

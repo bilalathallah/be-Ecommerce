@@ -1,4 +1,4 @@
-const { User } = require("../models");
+const { User } = require("../../database/models");
 
 module.exports = {
   findAll() {
@@ -14,12 +14,12 @@ module.exports = {
     });
   },
 
-  findByEmail(email) {
+  findByEmail(email){
     return User.findOne({
       where: {
         email: email,
-      },
-    });
+      }
+    })
   },
 
   create(createArgs) {
@@ -31,7 +31,6 @@ module.exports = {
       where: {
         id,
       },
-      individualHooks: true,
     });
   },
 };

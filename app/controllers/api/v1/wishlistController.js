@@ -1,9 +1,8 @@
-const product = require("../models/product");
-const wishlistService = require("../services/wishlistService");
+const wishlistService = require("../../../services/wishlistService");
 
 module.exports = {
   async list(req, res) {
-    try {
+    try {      
       const data = await wishlistService.list();
       res.status(200).json({
         status: true,
@@ -17,10 +16,10 @@ module.exports = {
       });
     }
   },
-  
+
   async showAllByBuyer(req, res) {
     try {
-      const data = await wishlistService.getWishlistBuyerById(req.user.id);
+      const data = await wishlistService.getWishlistBuyerById(req.params.id);
       if (data) {
         res.status(200).json({
           status: true,
@@ -43,7 +42,7 @@ module.exports = {
 
   async showAllBySeller(req, res) {
     try {
-      const data = await wishlistService.getWishlistSellerById(req.user.id);
+      const data = await wishlistService.getWishlistSellerById(req.params.id);
       if (data) {
         res.status(200).json({
           status: true,
@@ -63,19 +62,17 @@ module.exports = {
       });
     }
   },
-  
+
   async create(req, res) {
     try {
-      const userTokenId = req.user.id;
       const data = await wishlistService.create({
-        productId: req.body.productId,
-        userId: userTokenId,
-        createdAt: new Date(),
-        updatedAt: new Date(),
+        productId: req.body.productId,   
+        userId: req.body.userId,
+
       });
-      res.status(201).json({
+      res.status(201).json({                                               
         status: true,
-        message: "Wishlist has been added!",
+        message: "Wishlist Succesesfully added!",
         data: data,
       });
     } catch (err) {

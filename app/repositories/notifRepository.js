@@ -1,4 +1,4 @@
-const { Notification, Transaction, Product, Category } = require("../models");
+const { Notification, Transaction, Product, Category } = require("../../database/models");
 
 module.exports = {
   findAll() {

@@ -49,9 +49,9 @@ module.exports = {
     }
   },
 
-  async getProductByUser(userId) {
+  async getProductByUser(userId, productsizeId) {
     try {
-      return await transactionRepository.findProductByUser(userId, productId);
+      return await transactionRepository.findProductByUser(userId, productsizeId);
     } catch (err) {
       throw err;
     }
@@ -68,14 +68,6 @@ module.exports = {
   async update(id, requestBody) {
     try {
       return await transactionRepository.update(id, requestBody);
-    } catch (err) {
-      throw err;
-    }
-  },
-
-  async delete(id) {
-    try {
-      return await transactionRepository.delete(id);
     } catch (err) {
       throw err;
     }

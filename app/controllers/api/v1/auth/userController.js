@@ -1,10 +1,10 @@
 require("dotenv").config();
-const userService = require("../../services/userService");
+const userService = require("../../../../services/userService");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { JWT_SECRET } = process.env;
 const { promisify } = require("util");
-const cloudinary = require("../../../config/cloudinary");
+const cloudinary = require("../../../../../config/cloudinary");
 const cloudinaryUpload = promisify(cloudinary.uploader.upload);
 const cloudinaryDestroy = promisify(cloudinary.uploader.destroy);
 

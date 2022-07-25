@@ -1,4 +1,4 @@
-const categoryService = require("../services/categoryService");
+const categoryService = require("../../../services/categoryService");
 
 module.exports = {
   async list(req, res) {
@@ -19,7 +19,11 @@ module.exports = {
 
   async create(req, res) {
     try {
-      const data = await categoryService.create(req.body);
+      const data = await categoryService.create({
+        name: req.body.name,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      });
       res.status(201).json({
         status: true,
         message: "Category has been created!",

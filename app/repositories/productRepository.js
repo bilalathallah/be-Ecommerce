@@ -1,17 +1,55 @@
-const { Product, Category, User} = require("../models");
+const { Product, category, User } = require("../../database/models");
 
 module.exports = {
   findAll() {
     try {
       const data = Product.findAll({
-        include: [
-          {
-            model: Category,
-            as: "categories",
-            attributes: ["name"],
-          },
-        ],
-        attributes: ["id", "name","image", "price", "status"],
+        include: [{ 
+          model: category, 
+          as: "categories",
+          attributes: ["name"] 
+        },
+      ],
+      attributes: [
+        "id",
+        "name",
+        "image",
+        "price",
+        "createdAt",
+        "updatedAt",
+      ],
+    });
+
+    if (data) {
+      return data;
+    }
+    console.log(data);
+  } catch (error) {
+    return error;
+  }
+},
+  //       }, 
+  //       { 
+  //         model: User,
+  //         as: "userAsSeller",
+  //         attributes: ["id","role", "name", "email", "city", "address", "phone"] 
+  //       }],
+  //   });
+
+  //     if (data) {
+  //       return data;
+  //     }
+  //   } catch (error) {
+  //     return error;
+  //   }
+  // },
+  
+  findByIdCreate(id) {
+    try {
+      const data = Product.findOne({
+        where: {
+          id: id,
+        },
       });
 
       if (data) {
@@ -28,28 +66,20 @@ module.exports = {
       const data = Product.findOne({
         include: [
           {
-            model: Category,
+            model: category,
             as: "categories",
-            attributes: ["name"],
+            attributes: ["name"]
           },
           {
             model: User,
             as: "userAsSeller",
-            attributes: [
-              "id",
-              "role",
-              "name",
-              "city",
-              "address",
-              "phone",
-              "image",
-            ],
+            attributes: ["id","role","name","city","address","phone","image"]
           },
         ],
         where: {
           id: id,
         },
-        attributes: ["id", "name", "image", "price", "description", "status"],
+        attributes: ["id", "name", "image", "price", "description"],
       });
 
       if (data) {
@@ -69,32 +99,15 @@ module.exports = {
         },
         include: [
           {
-            model: Category,
+            model: category,
             as: "categories",
-            attributes: ["name"],
+            attributes: ["name"]
           },
           {
             model: User,
             as: "userAsSeller",
-            attributes: [
-              "id",
-              "role",
-              "name",
-              "city",
-              "address",
-              "phone",
-              "image",
-            ],
+            attributes: ["id","role","name","city","address","phone","image"]
           },
-        ],
-        attributes: [
-          "id",
-          "name",
-          "image",
-          "categoryId",
-          "price",
-          "description",
-          "status",
         ],
       });
     } catch (error) {
@@ -108,15 +121,21 @@ module.exports = {
         where: {
           userId: sellerId,
         },
-        include: [
-          {
-            model: Category,
-            as: "categories",
-            attributes: ["name"],
-          },
-        ],
-        attributes: ["id", "name", "image", "price", "status"],
-      });
+        include: [{
+          model: category,
+          as: "categories",
+          attributes: ["name"],
+        },
+      //   {
+      //     model: User,
+      //     as: "userAsSeller",
+      //     attributes: ["id","role", "name", "city", "address", "phone"]
+      //     },
+      //   ],
+      // });
+    ],
+    attributes: ["id", "name", "image", "price"],
+  });
     } catch (error) {
       return error;
     }
@@ -125,35 +144,20 @@ module.exports = {
   find(id) {
     try {
       const data = Product.findOne({
-        include: [
-          {
-            model: Category,
-            as: "categories",
-            attributes: ["name"],
-          },
-          {
-            model: User,
-            as: "userAsSeller",
-            attributes: [
-              "role",
-              "name",
-              "email",
-              "city",
-              "address",
-              "phone",
-              "status",
-            ],
-          },
-          {
-            model: Size,
-            as: "sizes",
-            attributes: ["size", "stock"],
-          },
-        ],
+        include: [{ 
+          model: category, 
+          as: "categories",
+          attributes: ["name"] 
+        }, 
+        { 
+          model: User,
+          as: "userAsSeller",
+          attributes: ["role", "name", "email", "city", "address", "phone"] 
+        }],
         where: {
           id: id,
-        },
-      });
+        }
+    });
 
       if (data) {
         return data;
