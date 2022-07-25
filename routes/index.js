@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const main = require("../app/controllers/main");
 const YAML = require("yamljs");
+const swaggerJsDoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = YAML.load("./swagger.yaml");
 
