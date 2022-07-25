@@ -1,0 +1,1146 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0",
+    "title": "Secondhand API",
+    "contact": {}
+  },
+  "host": "localhost:8000",
+  "basePath": "/api/v1",
+  "securityDefinitions": {},
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/register": {
+      "post": {
+        "summary": "REGISTER",
+        "tags": [
+          "User"
+        ],
+        "operationId": "REGISTER",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/REGISTERREQUEST"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/login": {
+      "post": {
+        "summary": "LOGIN",
+        "tags": [
+          "User"
+        ],
+        "operationId": "LOGIN",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/LOGINREQUEST"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/profile": {
+      "get": {
+        "summary": "READ PROFILE",
+        "tags": [
+          "User"
+        ],
+        "operationId": "READPROFILE",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "security": []
+      },
+      "put": {
+        "summary": "UPDATE PROFILE",
+        "tags": [
+          "User"
+        ],
+        "operationId": "UPDATEPROFILE",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "city",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "address",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "phone",
+            "in": "formData",
+            "required": true,
+            "type": "integer",
+            "format": "int64",
+            "description": ""
+          },
+          {
+            "name": "image",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/category": {
+      "get": {
+        "summary": "GET ALL CATEGORY",
+        "tags": [
+          "Category"
+        ],
+        "operationId": "GETALLCATEGORY",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "security": []
+      },
+      "post": {
+        "summary": "CREATE CATEGORY",
+        "tags": [
+          "Category"
+        ],
+        "operationId": "CREATECATEGORY",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/CREATECATEGORYREQUEST"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/category/1": {
+      "get": {
+        "summary": "GET CATEGORY BY ID",
+        "tags": [
+          "Category"
+        ],
+        "operationId": "GETCATEGORYBYID",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/category/2": {
+      "put": {
+        "summary": "UPDATE CATEGORY BY ID",
+        "tags": [
+          "Category"
+        ],
+        "operationId": "UPDATECATEGORYBYID",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/UPDATECATEGORYBYIDREQUEST"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/category/4": {
+      "delete": {
+        "summary": "DELETE CATEGORY BY ID",
+        "tags": [
+          "Category"
+        ],
+        "operationId": "DELETECATEGORYBYID",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/DELETECATEGORYBYIDREQUEST"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/wishlist": {
+      "get": {
+        "summary": "GET ALL WISHLIST",
+        "tags": [
+          "Wishlist"
+        ],
+        "operationId": "GETALLWISHLIST",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "security": []
+      },
+      "post": {
+        "summary": "CREATE WISHLIST",
+        "tags": [
+          "Wishlist"
+        ],
+        "operationId": "CREATEWISHLIST",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/CREATEWISHLISTREQUEST"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/wishlist/seller": {
+      "get": {
+        "summary": "GET SELLER WISHLIST",
+        "tags": [
+          "Wishlist"
+        ],
+        "operationId": "GETSELLERWISHLIST",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/wishlist/buyer": {
+      "get": {
+        "summary": "GET BUYER WISHLIST",
+        "tags": [
+          "Wishlist"
+        ],
+        "operationId": "GETBUYERWISHLIST",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/wishlist/2": {
+      "delete": {
+        "summary": "DELETE WISHLIST BY ID",
+        "tags": [
+          "Wishlist"
+        ],
+        "operationId": "DELETEWISHLISTBYID",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/product": {
+      "post": {
+        "summary": "CREATE PRODUCT SELLER",
+        "tags": [
+          "Product"
+        ],
+        "operationId": "CREATEPRODUCTSELLER",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/CREATEPRODUCTSELLERREQUEST"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "security": []
+      },
+      "get": {
+        "summary": "GET ALL PRODUCT",
+        "tags": [
+          "Product"
+        ],
+        "operationId": "GETALLPRODUCT",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/product/5": {
+      "delete": {
+        "summary": "DELETE PRODUCT",
+        "tags": [
+          "Product"
+        ],
+        "operationId": "DELETEPRODUCT",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/DELETEPRODUCTREQUEST"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/product/2": {
+      "put": {
+        "summary": "UPDATE PRODUCT",
+        "tags": [
+          "Product"
+        ],
+        "operationId": "UPDATEPRODUCT",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/UPDATEPRODUCTREQUEST"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "security": []
+      },
+      "get": {
+        "summary": "GET PRODUCT BY ID",
+        "tags": [
+          "Product"
+        ],
+        "operationId": "GETPRODUCTBYID",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/product/seller": {
+      "get": {
+        "summary": "GET PRODUCT SELLER",
+        "tags": [
+          "Product"
+        ],
+        "operationId": "GETPRODUCTSELLER",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/product/seller/1": {
+      "get": {
+        "summary": "GET PRODUCT SELLER BY ID",
+        "tags": [
+          "Product"
+        ],
+        "operationId": "GETPRODUCTSELLERBYID",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/transaction": {
+      "get": {
+        "summary": "GET ALL TRANSACTION",
+        "tags": [
+          "Transactions"
+        ],
+        "operationId": "GETALLTRANSACTION",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "security": []
+      },
+      "post": {
+        "summary": "CREATE TRANSACTION BUYER",
+        "tags": [
+          "Transactions"
+        ],
+        "operationId": "CREATETRANSACTIONBUYER",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/CREATETRANSACTIONBUYERREQUEST"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/transaction/buyer/5": {
+      "get": {
+        "summary": "GET TRANSACTIONS BY BUYER ID",
+        "tags": [
+          "Transactions"
+        ],
+        "operationId": "GETTRANSACTIONSBYBUYERID",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/transaction/seller/1": {
+      "get": {
+        "summary": "GET TRANSACTIONS BY SELLER ID",
+        "tags": [
+          "Transactions"
+        ],
+        "operationId": "GETTRANSACTIONSBYSELLERID",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/transaction/seller": {
+      "get": {
+        "summary": "GET DETAIL TRANSACTIONS BY SELLER",
+        "tags": [
+          "Transactions"
+        ],
+        "operationId": "GETDETAILTRANSACTIONSBYSELLER",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/transaction/1": {
+      "put": {
+        "summary": "UPDATE TRANSACTIONS BY SELLER",
+        "tags": [
+          "Transactions"
+        ],
+        "operationId": "UPDATETRANSACTIONSBYSELLER",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "example": {},
+              "type": "object"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/transaction/buyer": {
+      "get": {
+        "summary": "GET DETAILS TRANSACTION BY BUYER",
+        "tags": [
+          "Transactions"
+        ],
+        "operationId": "GETDETAILSTRANSACTIONBYBUYER",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/notification": {
+      "get": {
+        "summary": "GET ALL NOTIFICATION",
+        "tags": [
+          "Notifikasi"
+        ],
+        "operationId": "GETALLNOTIFICATION",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/notification/buyer": {
+      "get": {
+        "summary": "GET NOTIFICATION BY BUYER",
+        "tags": [
+          "Notifikasi"
+        ],
+        "operationId": "GETNOTIFICATIONBYBUYER",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "security": []
+      },
+      "put": {
+        "summary": "UPDATE NOTIFICATION BUYER BY ID",
+        "tags": [
+          "Notifikasi"
+        ],
+        "operationId": "UPDATENOTIFICATIONBUYERBYID",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/notification/seller": {
+      "get": {
+        "summary": "GET NOTIFICATION BY SELLER",
+        "tags": [
+          "Notifikasi"
+        ],
+        "operationId": "GETNOTIFICATIONBYSELLER",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "security": []
+      },
+      "put": {
+        "summary": "UPDATE NOTIFICATION SELLER BY ID",
+        "tags": [
+          "Notifikasi"
+        ],
+        "operationId": "UPDATENOTIFICATIONSELLERBYID",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    }
+  },
+  "definitions": {
+    "REGISTERREQUEST": {
+      "title": "REGISTERREQUEST",
+      "example": {
+        "role": "BUYER",
+        "name": "Hafid",
+        "email": "buyer1@secondhand.com",
+        "password": "buyer1",
+        "city": "Bandung",
+        "address": "Jl.Bandung",
+        "phone": "081215230",
+        "image": "gantungan.jpg"
+      },
+      "type": "object",
+      "properties": {
+        "role": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "image": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "role",
+        "name",
+        "email",
+        "password",
+        "city",
+        "address",
+        "phone",
+        "image"
+      ]
+    },
+    "LOGINREQUEST": {
+      "title": "LOGINREQUEST",
+      "example": {
+        "email": "buyer1@secondhand.com",
+        "password": "buyer1"
+      },
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "email",
+        "password"
+      ]
+    },
+    "UPDATECATEGORYBYIDREQUEST": {
+      "title": "UPDATECATEGORYBYIDREQUEST",
+      "example": {
+        "name": "Kendaraan"
+      },
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name"
+      ]
+    },
+    "DELETECATEGORYBYIDREQUEST": {
+      "title": "DELETECATEGORYBYIDREQUEST",
+      "example": {
+        "name": "Kendaraan"
+      },
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name"
+      ]
+    },
+    "CREATECATEGORYREQUEST": {
+      "title": "CREATECATEGORYREQUEST",
+      "example": {
+        "name": "Kesehatan"
+      },
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name"
+      ]
+    },
+    "CREATEWISHLISTREQUEST": {
+      "title": "CREATEWISHLISTREQUEST",
+      "example": {
+        "productId": "2",
+        "userId": "5"
+      },
+      "type": "object",
+      "properties": {
+        "productId": {
+          "type": "string"
+        },
+        "userId": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "productId",
+        "userId"
+      ]
+    },
+    "CREATEPRODUCTSELLERREQUEST": {
+      "title": "CREATEPRODUCTSELLERREQUEST",
+      "example": {
+        "userId": "1",
+        "categoryId": "5",
+        "name": "Wajan",
+        "price": "100000",
+        "description": "Bahan yang sangat berkualitas",
+        "image": "wajan.jpg"
+      },
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        },
+        "categoryId": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "price": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "image": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "userId",
+        "categoryId",
+        "name",
+        "price",
+        "description",
+        "image"
+      ]
+    },
+    "DELETEPRODUCTREQUEST": {
+      "title": "DELETEPRODUCTREQUEST",
+      "example": {
+        "userId": "1",
+        "categoryId": "2",
+        "name": "sandal",
+        "price": "70000",
+        "description": "dapat mengobati beberapa penyakit dan sangat ampuh",
+        "image": "sandal.jpg"
+      },
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        },
+        "categoryId": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "price": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "image": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "userId",
+        "categoryId",
+        "name",
+        "price",
+        "description",
+        "image"
+      ]
+    },
+    "UPDATEPRODUCTREQUEST": {
+      "title": "UPDATEPRODUCTREQUEST",
+      "example": {
+        "userId": "1",
+        "categoryId": "1",
+        "name": "bola kulit",
+        "price": "10000",
+        "description": "bahan sangat berkualitas dan terjamin",
+        "image": "bola.jpg"
+      },
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        },
+        "categoryId": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "price": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "image": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "userId",
+        "categoryId",
+        "name",
+        "price",
+        "description",
+        "image"
+      ]
+    },
+    "CREATETRANSACTIONBUYERREQUEST": {
+      "title": "CREATETRANSACTIONBUYERREQUEST",
+      "example": {
+        "productId": "2",
+        "userId": "6",
+        "bidprice": "50000"
+      },
+      "type": "object",
+      "properties": {
+        "productId": {
+          "type": "string"
+        },
+        "userId": {
+          "type": "string"
+        },
+        "bidprice": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "productId",
+        "userId",
+        "bidprice"
+      ]
+    }
+  },
+  "security": [],
+  "tags": [
+    {
+      "name": "User"
+    },
+    {
+      "name": "Category"
+    },
+    {
+      "name": "Wishlist"
+    },
+    {
+      "name": "Product"
+    },
+    {
+      "name": "Transactions"
+    },
+    {
+      "name": "Notifikasi"
+    }
+  ]
+}
