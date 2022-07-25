@@ -1,8 +1,8 @@
 # Kelompok 3 (FSW-5) :
 
-Altheo Hardian
-Bilal Athallah
-Cahyo Tri Nugroho
-Hafid Zaeny
-Nendy Azhad Nurrahman
-Yosep Victor
+1. Altheo Hardian
+2. Bilal Athallah
+3. Cahyo Tri Nugroho
+4. Hafid Zaeny
+5. Nendy Azhad Nurrahman
+6. Yosep Victor
